@@ -2,6 +2,22 @@ let currentQuestion = 0;
 let score = 0;
 let answered = false;
 
+// 진하게 하는 코드 추가됨
+
+const updateActiveQuestion = () => {
+    const questionItems = document.querySelectorAll('.question-navigation ul li');
+
+    questionItems.forEach((item, index) => {
+        if (index === currentQuestion) {
+            item.classList.add('active');  // 현재 문제 번호를 진하게 표시
+        } else {
+            item.classList.remove('active');  // 나머지 문제는 'active' 클래스 제거
+        }
+    });
+};
+
+// 여기까지 진하게 한 코드임 
+
 const subject1Questions = [
         {
             text: "1. 기억의 왜곡을 줄이는 데 효과적인 방법으로 가장 거리가 먼 것은?",
@@ -357,6 +373,9 @@ const loadQuestion = () => {
         nextButton.style.display = "inline-block";
         completeButton.style.display = "none";
     }
+
+     // 여기에서 updateActiveQuestion을 호출합니다
+     updateActiveQuestion();
 
     answered = false;
 };
